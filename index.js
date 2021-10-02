@@ -21,9 +21,11 @@ mongoose.connect(
     );
 
 const routePrefix = process.env.ROUT_URL_PREFIX;    
-
+const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
-const { use } = require("./routes/user");
+// const { use } = require("./routes/user");
+
+app.use(routePrefix + "auth", authRoute);
 app.use(routePrefix + "users", userRoute);
 
 
